@@ -7,9 +7,16 @@
 {% block content %}
 
   {% for post in posts %}
-    <h1>{{ post.title }}</h1>
-    <p>By {{ post.author }} on {{ post.date_posted}} </p>
-    <p>{{ post.content}}</p>
+    <article class="media content-section">
+      <div class="media-body">
+        <div class="article-metadata">
+          <a class="mr-2" href="#">{{ post.author }}</a>
+          <small class="text-muted">{{ post.date_posted }}</small>
+        </div>
+        <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
+        <p class="article-content">{{ post.content }}</p>
+      </div>
+    </article>
   {% endfor %}
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
