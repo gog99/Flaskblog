@@ -1,5 +1,7 @@
 from flask import Flask, escape, request, render_template, url_for, flash, redirect
 from forms import RegistrationForm, LoginForm
+import json
+
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = '37046177813704617781'
@@ -7,7 +9,7 @@ app.config['SECRET_KEY'] = '37046177813704617781'
 posts = [
     {
         'author': 'Jonny Senior',
-        'title': 'Living with a small peen',
+        'title': 'Living with a big smile',
         'content': 'uhh',
         'date_posted': 'April 20, 2018'
     },
@@ -32,19 +34,20 @@ def about():
 def register():
     form = RegistrationForm()
     if form.validate_on_submit():
-        flash(f'Account created- welcome {form.username.data}!', 'success')
+        flash(f'Account created- for {form.username.data}!', 'success')
         return redirect(url_for('home'))
     return render_template('register.html', title='Register', form=form)
-
-
 
 @app.route('/login')
 def login():
     form = LoginForm()
     return render_template('login.html', title='Login', form=form)
 
-
+@app.route('/random')
+def random():
+    return "hello world"
 
 
 if __name__ == '__main__':
+
     app.run(debug=True)
