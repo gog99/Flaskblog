@@ -1,3 +1,3 @@
-from flaskblog import app
+from run import app
 import pytest
 #@pytest.fixture()
