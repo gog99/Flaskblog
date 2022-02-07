@@ -1,7 +1,7 @@
 from flask import render_template, url_for, flash, redirect
-from flaskblog import app
-from flaskblog.forms import RegistrationForm, LoginForm
-from flaskblog.models import User, Post
+from core import app
+from core.forms import RegistrationForm, LoginForm
+from core.models import User, Post
 
 
 # dummy data
@@ -35,7 +35,7 @@ def about():
 def register():
     form = RegistrationForm()
     if form.validate_on_submit():
-        flash(f'Account created- for {form.username.data}!', 'success')
+        flash(f'Account created for {form.username.data}!', 'success')
         return redirect(url_for('home'))
     return render_template('register.html', title='Register', form=form)
 

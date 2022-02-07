@@ -1,4 +1,4 @@
-from core.add import add
+from core import add
 import pytest
 
 
