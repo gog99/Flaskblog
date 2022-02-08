@@ -11,21 +11,24 @@ class RegistrationForm(FlaskForm):
   submit = SubmitField('Sign Up')
 
   #ensures username is unique
-  def validate_field(self, username):
+  def validate_username(self, username):
     user = User.query.filter_by(username=username.data).first()
     if user:
       raise ValidationError('That username is taken- please choose a different one')
 
   #ensures email is unique
-  def validate_field(self, email):
+  def validate_email(self, email):
     user = User.query.filter_by(email=email.data).first()
     if user:
       raise ValidationError('That username is taken- please choose a different one')
 
 
 class LoginForm(FlaskForm):
-  username = StringField('Username', validators=[DataRequired(), Length(min=2, max=20)])
+
   email = StringField('Email', validators=[DataRequired(), Email()])
   password = PasswordField('Password', validators=[DataRequired()])
   remember = BooleanField('Remember Me')
   submit = SubmitField('Login')
+
+
+#  username = StringField('Username', validators=[DataRequired(), Length(min=2, max=20)])
