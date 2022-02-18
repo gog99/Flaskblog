@@ -1,3 +1,6 @@
-from run import app
+from core.routes import app
 import pytest
-#@pytest.fixture()
+
+@pytest.fixture()
+def app_client():
+  yield app.test_client()
